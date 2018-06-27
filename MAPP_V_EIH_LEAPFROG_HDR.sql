@@ -125,6 +125,7 @@ end AS TYP_OF_DNT_MAPP
 ,(case when (tType.R_TYPE_ID in (6,7)) then (case when (ef.DIRECT_OR_THIRD_PARTY = 1) then recip.RECIP_NAME else '' end) else '' end) AS RCPNT
 ,(case when (tType.R_TYPE_ID in (6,7)) then case when ef.DIRECT_OR_THIRD_PARTY = 1 then 'Yes' else 'No' END else 'No' end) AS PD_THRU_TPV
 ,(case when (projectOwner.COUNTRY = 'VE') then 'E1' else 'SAP' end) AS PFE_ERP
+/* WBS may change, if so, then we need to wrap ABOVEMARKET in a case when ttype = 1 then ... else '' end statement*/
 ,(case when meet.IS_PART_OF_REGIONAL_EVENT then 'LATAM' else '' end) AS ABOVEMARKET
 ,contrctRegion.NAME AS ORIGINATINGCOUNTRY
 ,(case when isnull(ef.VENDOR_ID) then 'Vendor not available' end) AS VNDR_NT_AVAILR 
